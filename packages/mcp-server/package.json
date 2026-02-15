@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@antdv-mcp/shared": "workspace:*",
-    "@modelcontextprotocol/sdk": "^0.5.0",
+    "@modelcontextprotocol/sdk": "^1.26.0",
     "better-sqlite3": "^9.2.2"
   },
   "devDependencies": {
