@@ -97,7 +97,8 @@ export class Parser {
     $table.find('tbody tr, tr').each((_: number, tr: any) => {
       const $tr = cheerio.load(tr);
       const isHeader = $tr('th').length > 0 && $tr('td').length === 0;
-      if (isHeader) return; // Skip header rows
+      // Skip header rows that only contain <th> elements
+      if (isHeader) return;
 
       const row: string[] = [];
       $tr('td').each((_: number, td: any) => {
@@ -135,6 +136,7 @@ export class Parser {
     for (const row of rows) {
       if (row.length === 0) continue;
 
+      // Use first column as name if 'name' column not found (fallback)
       const name = row[colMap['name']] || row[0];
       if (!name || name === '-') continue;
 

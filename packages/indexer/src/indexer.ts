@@ -103,6 +103,7 @@ export class Indexer {
     );
 
     for (const item of apiItems) {
+      // SQLite uses 1 for true, 0 for false (no native boolean type)
       insertStmt.run(
         item.version,
         item.component_tag,

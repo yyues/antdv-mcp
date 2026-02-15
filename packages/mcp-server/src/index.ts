@@ -16,6 +16,8 @@ import {
   normalizeComponentTag,
 } from '@antdv-mcp/shared';
 
+// Database path can be configured via ANTDV_DB_PATH environment variable
+// Defaults to ./data/antdv.sqlite if not set
 const DB_PATH = process.env.ANTDV_DB_PATH || './data/antdv.sqlite';
 
 class AntdvMcpServer {
