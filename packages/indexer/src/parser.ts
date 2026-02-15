@@ -73,12 +73,12 @@ export class Parser {
     return apiItems;
   }
 
-  private parseTable($table: cheerio.Cheerio): TableData {
+  private parseTable($table: cheerio.Cheerio<any>): TableData {
     const headers: string[] = [];
     const rows: string[][] = [];
 
     // Extract headers
-    $table.find('thead tr th, thead tr td').each((_, th) => {
+    $table.find('thead tr th, thead tr td').each((_: number, th: any) => {
       headers.push(cheerio.load(th).text().trim());
     });
 
@@ -88,19 +88,19 @@ export class Parser {
         .find('tr')
         .first()
         .find('th, td')
-        .each((_, th) => {
+        .each((_: number, th: any) => {
           headers.push(cheerio.load(th).text().trim());
         });
     }
 
     // Extract rows
-    $table.find('tbody tr, tr').each((_, tr) => {
+    $table.find('tbody tr, tr').each((_: number, tr: any) => {
       const $tr = cheerio.load(tr);
       const isHeader = $tr('th').length > 0 && $tr('td').length === 0;
       if (isHeader) return; // Skip header rows
 
       const row: string[] = [];
-      $tr('td').each((_, td) => {
+      $tr('td').each((_: number, td: any) => {
         row.push(cheerio.load(td).text().trim());
       });
 

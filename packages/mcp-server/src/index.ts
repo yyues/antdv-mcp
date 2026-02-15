@@ -50,6 +50,10 @@ class AntdvMcpServer {
       const { name, arguments: args } = request.params;
 
       try {
+        if (!args) {
+          throw new Error('Missing arguments');
+        }
+
         switch (name) {
           case 'adv_search_docs':
             return await this.searchDocs(
@@ -257,7 +261,10 @@ class AntdvMcpServer {
     };
   }
 
-  private async getComponentApi(componentName: string, version: Version) {
+  private async getComponentApi(
+    componentName: string,
+    version: Version
+  ): Promise<{ content: Array<{ type: string; text: string }> }> {
     const tag = normalizeComponentTag(componentName);
 
     // Find component
