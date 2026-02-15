@@ -25,7 +25,7 @@ pnpm index:all
 
 索引完成后会在仓库根目录生成数据库文件：`./data/antdv.sqlite`（已在 `.gitignore` 中忽略）。
 
-### 3. 配置 MCP（以 VS Code + Roo Cline 为例）
+### 3. 配置 MCP（以 VS Code + Roo-Cline 为例）
 
 编辑配置文件：
 `~/.config/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/cline_mcp_settings.json`
