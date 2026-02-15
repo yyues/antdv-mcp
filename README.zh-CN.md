@@ -1,6 +1,6 @@
 # Ant Design Vue MCP（中文）
 
-这是一个用于 **Ant Design Vue** 文档的 MCP（Model Context Protocol）服务，提供文档检索与组件 API 查询能力，方便 AI 助手快速获取准确资料。
+这是一个用于 **Ant Design Vue** 文档的 MCP（Model Context Protocol）服务，可提供文档检索与组件 API 查询能力，方便 AI 助手快速获取准确资料。
 
 ## 前置要求
 
@@ -23,11 +23,11 @@ pnpm build
 pnpm index:all
 ```
 
-索引完成后会在仓库根目录生成数据库文件：`./data/antdv.sqlite`（已在 `.gitignore` 中忽略）。
+索引完成后会在仓库根目录生成数据库文件：`./data/antdv.sqlite`（索引过程会自动创建 `data` 目录，且已在 `.gitignore` 中忽略）。
 
 ### 3. 配置 MCP（以 VS Code + Roo-Cline 为例）
 
-编辑配置文件：
+编辑配置文件（Roo-Cline 扩展默认目录；若使用其他 MCP 客户端，请按其文档调整路径）：
 `~/.config/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/cline_mcp_settings.json`
 
 ```json
