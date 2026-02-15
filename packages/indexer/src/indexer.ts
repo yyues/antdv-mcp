@@ -98,7 +98,7 @@ export class Indexer {
     // Insert new API items
     const insertStmt = db.prepare(
       `INSERT INTO api_items 
-       (version, component_tag, kind, name, type, required, default_value, description, values, since, deprecated, source_url)
+       (version, component_tag, kind, name, type, required, default_value, description, enum_values, since, deprecated, source_url)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     );
 
@@ -112,7 +112,7 @@ export class Indexer {
         item.required ? 1 : 0,
         item.default_value,
         item.description,
-        item.values,
+        item.enum_values,
         item.since,
         item.deprecated,
         item.source_url

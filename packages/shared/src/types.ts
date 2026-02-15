@@ -32,7 +32,7 @@ export interface ApiItem {
   required?: boolean;
   default_value?: string;
   description?: string;
-  values?: string; // JSON array of enum values
+  enum_values?: string; // JSON array of enum values
   since?: string;
   deprecated?: string;
   source_url: string;
@@ -61,9 +61,7 @@ export function normalizeComponentTag(name: string): string {
   if (lower.startsWith('a-')) {
     return lower;
   }
-  if (lower.startsWith('a')) {
-    return 'a-' + lower.substring(1);
-  }
+  // Don't try to be smart about names starting with 'a' - just add 'a-' prefix
   return 'a-' + lower;
 }
 

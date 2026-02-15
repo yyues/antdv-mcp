@@ -57,7 +57,7 @@ export class DatabaseManager {
         required INTEGER DEFAULT 0,
         default_value TEXT,
         description TEXT,
-        values TEXT,
+        enum_values TEXT,
         since TEXT,
         deprecated TEXT,
         source_url TEXT NOT NULL

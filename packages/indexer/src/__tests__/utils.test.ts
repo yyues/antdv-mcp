@@ -57,8 +57,9 @@ describe('normalizeComponentTag', () => {
     expect(normalizeComponentTag('A-Button')).toBe('a-button');
   });
 
-  it('should handle names starting with a but no dash', () => {
-    expect(normalizeComponentTag('affix')).toBe('a-ffix');
-    expect(normalizeComponentTag('alert')).toBe('a-lert');
+  it('should handle names starting with a correctly', () => {
+    expect(normalizeComponentTag('affix')).toBe('a-affix');
+    expect(normalizeComponentTag('alert')).toBe('a-alert');
+    expect(normalizeComponentTag('anchor')).toBe('a-anchor');
   });
 });

@@ -166,7 +166,7 @@ export class Parser {
         required,
         default_value: defaultValue || undefined,
         description: description || undefined,
-        values: enumValues.length > 0 ? JSON.stringify(enumValues) : undefined,
+        enum_values: enumValues.length > 0 ? JSON.stringify(enumValues) : undefined,
         since: since || undefined,
         deprecated: deprecated || undefined,
         source_url: sourceUrl,
