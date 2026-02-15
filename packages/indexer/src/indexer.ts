@@ -1,7 +1,7 @@
 import { DatabaseManager } from './database';
 import { Crawler } from './crawler';
 import { Parser } from './parser';
-import { Version, Page, Component, normalizeComponentTag } from '@antdv-mcp/shared';
+import { Version, Page, Component } from '@antdv-mcp/shared';
 import * as cheerio from 'cheerio';
 
 export class Indexer {

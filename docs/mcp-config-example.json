@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "antdv": {
+      "command": "node",
+      "args": [
+        "/absolute/path/to/antdv-mcp/packages/mcp-server/dist/index.js"
+      ],
+      "env": {
+        "ANTDV_DB_PATH": "/absolute/path/to/antdv-mcp/data/antdv.sqlite"
+      }
+    }
+  }
+}
