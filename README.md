@@ -2,6 +2,8 @@
 
 A Model Context Protocol (MCP) server for Ant Design Vue documentation with an indexer CLI. This project provides structured access to Ant Design Vue component documentation (v3 and v4) through MCP tools, enabling AI assistants to query component APIs, search documentation, and provide accurate information.
 
+Chinese documentation: [README.zh-CN.md](./README.zh-CN.md)
+
 ## Features
 
 - 📚 **Documentation Indexer**: Crawls and indexes Ant Design Vue v3 and v4 documentation
