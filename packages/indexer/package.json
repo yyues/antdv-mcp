@@ -1,0 +1,31 @@
+{
+  "name": "@antdv-mcp/indexer",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "antdv-indexer": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "test": "jest",
+    "index": "node dist/cli.js"
+  },
+  "dependencies": {
+    "@antdv-mcp/shared": "workspace:*",
+    "better-sqlite3": "^9.2.2",
+    "cheerio": "^1.0.0-rc.12",
+    "commander": "^11.1.0",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/node-fetch": "^2.6.11",
+    "@types/jest": "^29.5.11",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@antdv-mcp/mcp-server",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "antdv-mcp-server": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@antdv-mcp/shared": "workspace:*",
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "better-sqlite3": "^9.2.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.8",
+    "typescript": "^5.3.3"
+  }
+}
