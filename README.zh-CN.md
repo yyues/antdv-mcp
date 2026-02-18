@@ -54,6 +54,7 @@ pnpm index:all
 
 - `adv_search_docs`：全文搜索文档
 - `adv_list_components`：列出组件
+- `adv_find_components`：根据组件描述搜索组件
 - `adv_get_component_api`：获取组件 API（Props/Events/Slots/Methods）
 - `adv_find_prop`：按属性名称查找 API
 

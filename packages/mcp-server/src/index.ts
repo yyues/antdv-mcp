@@ -67,6 +67,13 @@ class AntdvMcpServer {
           case 'adv_list_components':
             return await this.listComponents(args.version as Version);
 
+          case 'adv_find_components':
+            return await this.findComponents(
+              args.query as string,
+              args.version as Version | 'all' | undefined,
+              args.limit as number | undefined
+            );
+
           case 'adv_get_component_api':
             return await this.getComponentApi(args.component as string, args.version as Version);
 
@@ -132,6 +139,30 @@ class AntdvMcpServer {
             },
           },
           required: ['version'],
+        },
+      },
+      {
+        name: 'adv_find_components',
+        description:
+          'Find components by searching their documentation description text for matching keywords.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            query: {
+              type: 'string',
+              description: 'Search query (keywords or description)',
+            },
+            version: {
+              type: 'string',
+              enum: ['v3', 'v4', 'all'],
+              description: 'Version to search (default: all)',
+            },
+            limit: {
+              type: 'number',
+              description: 'Maximum number of results (default: 10)',
+            },
+          },
+          required: ['query'],
         },
       },
       {
@@ -258,6 +289,43 @@ class AntdvMcpServer {
         {
           type: 'text',
           text: JSON.stringify(components, null, 2),
+        },
+      ],
+    };
+  }
+
+  private async findComponents(query: string, version: Version | 'all' = 'all', limit: number = 10) {
+    let componentQuery = `
+      SELECT c.tag, c.title, c.doc_url, c.version,
+             snippet(pages_fts, 2, '<mark>', '</mark>', '...', 32) as snippet
+      FROM pages_fts
+      JOIN pages p ON pages_fts.rowid = p.id
+      JOIN components c ON c.doc_url = p.url AND c.version = p.version
+      WHERE pages_fts MATCH ?
+    `;
+
+    if (version !== 'all') {
+      componentQuery += ` AND c.version = ?`;
+    }
+
+    componentQuery += ` ORDER BY bm25(pages_fts) LIMIT ?`;
+
+    const componentParams =
+      version !== 'all' ? [query, version, limit] : [query, limit];
+    const componentRows = this.db.prepare(componentQuery).all(...componentParams) as any[];
+    const results = componentRows.map((row) => ({
+      tag: row.tag,
+      title: row.title,
+      doc_url: row.doc_url,
+      snippet: row.snippet || '',
+      version: row.version,
+    }));
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(results, null, 2),
         },
       ],
     };

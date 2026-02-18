@@ -116,6 +116,27 @@ List all available components for a version.
 }
 ```
 
+#### `adv_find_components`
+
+Find components by searching their documentation description text.
+
+```typescript
+{
+  query: string,           // Search query
+  version?: 'v3' | 'v4' | 'all',  // Default: 'all'
+  limit?: number          // Default: 10
+}
+```
+
+**Example**: Find a component for "upload files"
+```json
+{
+  "query": "upload files",
+  "version": "v4",
+  "limit": 5
+}
+```
+
 #### `adv_get_component_api`
 
 Get structured API documentation for a component.

@@ -77,7 +77,7 @@ Features:
 - ✅ Stores structured data in SQLite
 
 ### 4. MCP Server
-4 tools implemented:
+5 tools implemented:
 
 1. **`adv_search_docs`**
    - Full-text search across pages and API items
@@ -88,12 +88,17 @@ Features:
    - Lists all components for a version
    - Returns tag, title, and doc_url
 
-3. **`adv_get_component_api`**
+3. **`adv_find_components`**
+   - Finds components by searching their description text
+   - Supports version filtering (v3, v4, or all)
+   - Returns snippets with match highlighting
+
+4. **`adv_get_component_api`**
    - Gets structured API for a component
    - Groups by props, events, slots, methods
    - Supports component name aliases
 
-4. **`adv_find_prop`**
+5. **`adv_find_prop`**
    - Finds specific prop/API item
    - Returns suggestions if not found
 
